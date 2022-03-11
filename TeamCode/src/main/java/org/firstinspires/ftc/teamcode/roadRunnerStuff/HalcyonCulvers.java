@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp
-public class HalcyonState extends LinearOpMode {
+public class HalcyonCulvers extends LinearOpMode {
 
     ElapsedTime timer = new ElapsedTime();
 
@@ -112,7 +112,7 @@ public class HalcyonState extends LinearOpMode {
         Vector2d input = new Vector2d(
                 -gamepad1.left_stick_y,
                 -gamepad1.left_stick_x
-        ).rotated(-poseEstimate.getHeading());
+        );
 
         // Pass in the rotated input + right stick value for rotation
         // Rotation is not part of the rotated input thus must be passed in separately
@@ -134,7 +134,7 @@ public class HalcyonState extends LinearOpMode {
         Vector2d input = new Vector2d(
                 -gamepad1.left_stick_y * 0.5,
                 -gamepad1.left_stick_x * 0.5
-        ).rotated(-poseEstimate.getHeading());
+        );
 
         drive.setWeightedDrivePower(
                 new Pose2d(
@@ -154,7 +154,7 @@ public class HalcyonState extends LinearOpMode {
         Vector2d input = new Vector2d(
                 -gamepad1.left_stick_y * 0.25,
                 -gamepad1.left_stick_x * 0.25
-        ).rotated(-poseEstimate.getHeading());
+        );
 
         drive.setWeightedDrivePower(
                 new Pose2d(
@@ -180,7 +180,7 @@ public class HalcyonState extends LinearOpMode {
         }
 
         if(gamepad1.b){
-            PowerShotAutoRR();
+           // PowerShotAutoRR();
         }
 
         if (gamepad1.right_stick_button){
@@ -190,8 +190,8 @@ public class HalcyonState extends LinearOpMode {
         if (gamepad2.dpad_down){
             drive.leftPivot.setPosition(1);
             drive.rightPivot.setPosition(0);
-            frontVelocity = 1250;
-            backVelocity = 1900;
+            frontVelocity = 0.69;
+            backVelocity = 0.69;
             shooterPower = 1;
             speed();
             driving();
@@ -201,8 +201,8 @@ public class HalcyonState extends LinearOpMode {
         if (gamepad2.dpad_up){
             drive.leftPivot.setPosition(1);
             drive.rightPivot.setPosition(0);
-            frontVelocity = 1140;
-            backVelocity = 1710;
+            frontVelocity = 1;
+            backVelocity = 1;
             shooterPower = 1;
             speed();
             driving();
@@ -223,12 +223,12 @@ public class HalcyonState extends LinearOpMode {
 
         if (gamepad2.y && !previousY){
             if (shooterPower == 1) {
-                drive.frontShooter.setVelocity(0);
-                drive.backShooter.setVelocity(0);
+                drive.frontShooter.setPower(0);
+                drive.backShooter.setPower(0);
                 shooterPower = 0;
             } else if(shooterPower == 0){
-                drive.frontShooter.setVelocity(frontVelocity);
-                drive.backShooter.setVelocity(backVelocity);
+                drive.frontShooter.setPower(frontVelocity);
+                drive.backShooter.setPower(backVelocity);
                 shooterPower = 1;
             }
             driving();
@@ -354,8 +354,8 @@ public class HalcyonState extends LinearOpMode {
         frontVelocity = 0;
         backVelocity = 0;
         shooterPower = 0;
-        drive.frontShooter.setVelocity(frontVelocity);
-        drive.backShooter.setVelocity(backVelocity);
+        drive.frontShooter.setPower(frontVelocity);
+        drive.backShooter.setPower(backVelocity);
         driving();
     }
 
@@ -396,16 +396,16 @@ public class HalcyonState extends LinearOpMode {
         backVelocity = 0;
         shooterPower = 0;
         drive.tapper.setPosition(0);
-        drive.frontShooter.setVelocity(frontVelocity);
-        drive.backShooter.setVelocity(backVelocity);
+        drive.frontShooter.setPower(frontVelocity);
+        drive.backShooter.setPower(backVelocity);
         driving();
     }
 
 
     private void speed() {
 
-        drive.frontShooter.setVelocity(frontVelocity);
-        drive.backShooter.setVelocity(backVelocity);
+        drive.frontShooter.setPower(frontVelocity);
+        drive.backShooter.setPower(backVelocity);
         driving();
     }
 
