@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.testAndCopies;
+package org.firstinspires.ftc.teamcode.testAndCopies.servoAndGripper;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;

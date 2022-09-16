@@ -41,7 +41,6 @@ import java.util.List;
 
 import org.firstinspires.ftc.teamcode.roadRunnerStuff.Util.DashboardUtil;
 import org.firstinspires.ftc.teamcode.roadRunnerStuff.Util.LynxModuleUtil;
-import androidx.annotation.NonNull;
 
 import static org.firstinspires.ftc.teamcode.roadRunnerStuff.DriveConstants.MAX_ACCEL;
 import static org.firstinspires.ftc.teamcode.roadRunnerStuff.DriveConstants.MAX_ANG_ACCEL;
@@ -398,7 +397,7 @@ public class SampleMecanumDrive extends MecanumDrive {
         setDrivePower(vel);
     }
 
-    @NonNull
+
     @Override
     public List<Double> getWheelPositions() {
         List<Double> wheelPositions = new ArrayList<>();
